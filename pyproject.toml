@@ -4,31 +4,21 @@ build-backend = "hatchling.build"
 
 [project]
 name = "drawio-label-translator"
-version = "0.1.0"
-description = "Translate labels in draw.io files and add language-specific attributes; includes a small Flask server."
+version = "0.2.0"
+description = "Translate labels in draw.io files; add UserObject data for label_xx/label-xx; includes a small Flask server."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Your Name" }]
-# Core runtime deps:
 dependencies = [
   "requests>=2.31",
   "Flask>=3.0",
-]
+  "translators>=5.9.0",
+  "langdetect>=1.0.9",
 
-# Optional extras:
-[project.optional-dependencies]
-# Fallback translator if you don't use DeepL. Community library; may be unreliable.
-fallback = ["googletrans==4.0.0rc1"]
-# Developer tools and type stubs
-dev = [
-  "mypy>=1.11",
-  "types-requests>=2.31.0.20240218",
-  "types-werkzeug>=1.0.9",
 ]
 
 [project.scripts]
-# Expose the CLI entrypoint so you can run: translate-drawio path/to/file.drawio
 translate-drawio = "translate_drawio:main"
 
 [tool.mypy]
@@ -44,11 +34,6 @@ disallow_incomplete_defs = true
 check_untyped_defs = true
 disallow_subclassing_any = false
 disallow_any_generics = false
-# Third-party packages may lack type hints; we ignore missing imports globally.
 ignore_missing_imports = true
-
-# Limit to your project files (adjust as needed)
 files = ["translate_drawio.py", "server.py", "configuration.py"]
-
-# Exclude typical non-source directories
 exclude = "(^\\.|^venv$|^\\.venv$|^build$|^dist$|^__pycache__$)"

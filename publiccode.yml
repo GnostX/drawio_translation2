@@ -1,0 +1,59 @@
+publiccodeYmlVersion: 0.5.0
+name: drawio_translations2
+applicationSuite: office automation it-architecture
+url: https://github.com/GnostX/drawio_translation2
+landingURL: https://github.com/GnostX/drawio_translation2
+softwareVersion: "1.0"
+releaseDate: 2025-12-14
+platforms:
+  - windows
+  - linux
+categories:
+  - business-process-management
+  - document-management
+  - it-management
+  - knowledge-management
+  - mind-mapping
+  - office
+  - translation
+fundedBy:
+  - name: DTI
+    uri: https://ld.admin.ch/ou/20048177
+developmentStatus: beta
+softwareType: standalone/desktop
+organisation:
+  uri: https://ld.admin.ch/FCh
+  name: Bundeskanzlei
+description:
+  en:
+    localisedName: Atlas
+    shortDescription: Translate text in draw.io (.drawio) diagrams into multiple
+      languages and embed the translations so they are visible in diagrams.net.
+    longDescription: >
+      Translate text in draw.io (.drawio) diagrams into multiple languages and
+      embed the translations so they are visible in diagrams.net’s “Edit Data…”
+      panel and compatible with the translate-diagram helper.
+
+      To make use of the translations use:
+      https://app.diagrams.net/?ui=kennedy&translate-diagram=1
+
+      The way to switch then between languages and how to handle the
+      translations is discussed here:
+      https://www.drawio.com/blog/translate-diagrams 
+    documentation: https://github.com/GnostX/drawio_translation2/README.md
+    apiDocumentation: https://github.com/GnostX/drawio_translation2/README.md
+    features:
+      - translates whole directoriePricing
+      - handles multiple languages
+      - detects and preserves original languages
+legal:
+  license: AGPL-1.0-or-later
+maintenance:
+  type: internal
+  contacts:
+    - name: GnostX GmbH
+      email: opendata@gnostx.ch
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - en

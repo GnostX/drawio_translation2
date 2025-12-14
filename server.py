@@ -237,6 +237,8 @@ def translate_upload() -> Response:
 
             # Prepare output name similar to CLI default
             out_name: Optional[str] = f"{input_path.stem}_translated.drawio"
+            # Keep the same filename for output
+            out_name: Optional[str] = filename
 
             # Use configuration values
             languages = getattr(configuration, "LANGUAGES", [])
