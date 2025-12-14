@@ -32,3 +32,11 @@ TRANSLATOR_TIMEOUT = 20
 # Optional HTTP(S) proxies for the translators client (None or a dict)
 # Example: {"http": "http://proxy.local:8080", "https": "http://proxy.local:8080"}
 TRANSLATOR_PROXIES = None
+
+# Try these engines if the primary engine returns the same text (optional)
+# TRANSLATOR_FALLBACK_ENGINES = ["bing", "youdao"]
+TRANSLATOR_FALLBACK_ENGINES = ["bing"]
+
+# Also create label_en / label-en keys alongside the English base label
+WRITE_EN_KEYS = True
+

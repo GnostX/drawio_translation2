@@ -40,6 +40,8 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
 import xml.etree.ElementTree as ET
 from html import unescape as html_unescape
+import re
+
 
 # Load configuration
 try:
@@ -56,6 +58,7 @@ CFG_OVERWRITE: bool = getattr(configuration, "OVERWRITE_EXISTING", True)
 TRANSLATOR_ENGINE: str = getattr(configuration, "TRANSLATOR_ENGINE", "google")
 TRANSLATOR_TIMEOUT: int = int(getattr(configuration, "TRANSLATOR_TIMEOUT", 20))
 TRANSLATOR_PROXIES = getattr(configuration, "TRANSLATOR_PROXIES", None)  # e.g., {"http":"http://...","https":"http://..."}
+WRITE_EN_KEYS: bool = getattr(configuration, "WRITE_EN_KEYS", True)
 
 if not LANGUAGES:
     print("ERROR: configuration.LANGUAGES must be defined (e.g., ['en','de','fr','it']).", file=sys.stderr)
@@ -70,47 +73,58 @@ class Translator:
         self.engine = engine
         self.timeout = timeout
         self.proxies = proxies
+        self.fallback_engines: List[str] = getattr(configuration, "TRANSLATOR_FALLBACK_ENGINES", [])
         self._cache: Dict[Tuple[str, str], str] = {}
-
         try:
             import translators as ts  # noqa: F401
         except Exception:
             print("ERROR: The 'translators' package is required. Install with: pip install translators", file=sys.stderr)
             raise
 
-    def translate(self, text: str, target_lang: str, source_lang: Optional[str] = None) -> str:
-        """
-        Translate text into target_lang. If source_lang provided, use it; otherwise
-        let the engine autodetect based on self.source_lang setting.
-        """
-        txt = (text or "").strip()
-        if not txt:
-            return txt
-
-        # Cache key includes target_lang and source_lang (falls back to self.source_lang)
-        src = (source_lang or self.source_lang or "auto").lower()
-        key = (f"{src}:{txt}", target_lang.lower())
-        if key in self._cache:
-            return self._cache[key]
-
+    def _translate_with_engine(self, txt: str, src: str, tgt: str, engine: str) -> Optional[str]:
         try:
             import translators as ts
             out = ts.translate_text(
                 txt,
-                translator=self.engine,
+                translator=engine,
                 from_language=src,
-                to_language=target_lang,
+                to_language=tgt,
                 timeout=self.timeout,
                 if_use_preacceleration=False,
                 proxies=self.proxies,
             )
             if isinstance(out, str) and out.strip():
-                self._cache[key] = out
                 return out
         except Exception as e:
-            sys.stderr.write(f"translators backend exception ({self.engine}): {e}\n")
+            sys.stderr.write(f"translators backend exception ({engine}): {e}\n")
+        return None
 
-        # Fallback: return original text on failure
+    def translate(self, text: str, target_lang: str, source_lang: Optional[str] = None) -> str:
+        txt = (text or "").strip()
+        if not txt:
+            return txt
+        src = (source_lang or self.source_lang or "auto").lower()
+        tgt = target_lang.lower()
+
+        key = (f"{src}:{txt}", tgt)
+        if key in self._cache:
+            return self._cache[key]
+
+        # Primary engine
+        out = self._translate_with_engine(txt, src, tgt, self.engine)
+        if out and (src == tgt or out.strip() != txt.strip()):
+            self._cache[key] = out
+            return out
+
+        # Try fallbacks if the result equals the source and src != tgt
+        if src != tgt:
+            for eng in self.fallback_engines:
+                out2 = self._translate_with_engine(txt, src, tgt, eng)
+                if out2 and out2.strip() != txt.strip():
+                    self._cache[key] = out2
+                    return out2
+
+        # Fallback: return original
         self._cache[key] = txt
         return txt
 
@@ -118,29 +132,76 @@ class Translator:
 # -------------------------
 # Language detection (per diagram)
 # -------------------------
-def detect_primary_language(texts: List[str], default_lang: str = "en") -> str:
-    """
-    Detect a primary language from a list of sample texts using langdetect.
-    Returns a two-letter code if possible, else default_lang.
-    """
-    sample = " ".join(t for t in texts if t).strip()
-    # Limit length to reduce noise
-    if len(sample) > 8000:
-        sample = sample[:8000]
+def _strip_html_tags(s: str) -> str:
+    # Remove draw.io inline HTML tags so detection sees plain text
+    return re.sub(r"<[^>]+>", " ", s or "")
 
-    if not sample:
-        return default_lang
+def detect_primary_language_allowed(texts: List[str], allowed_langs: List[str], default_lang: str = "en") -> str:
+    """
+    Detect primary language using only the allowed_langs set.
+    Aggregates langdetect probabilities across snippets but keeps scores only
+    for languages present in allowed_langs. Returns the best allowed code.
+    Falls back to default_lang if no allowed scores could be computed.
+    """
+    allowed = {l.lower() for l in allowed_langs if l}
+    if not allowed:
+        return default_lang.lower()
+
+    # Clean and filter snippets to reduce noise
+    samples = []
+    for t in texts:
+        if not t:
+            continue
+        clean = _strip_html_tags(decode_label_text(t)).strip()
+        if len(clean) >= 3:
+            samples.append(clean)
+
+    if not samples:
+        # No usable text; prefer default if in allowed, else first allowed
+        return (default_lang.lower() if default_lang.lower() in allowed else next(iter(allowed)))
+
+    # Map some variant codes to base ones (helps when allowed uses base codes)
+    def normalize_code(code: str) -> str:
+        c = code.lower()
+        if c in ("zh-cn", "zh-tw", "zh-hans", "zh-hant"):
+            return "zh"
+        if c in ("pt-br", "pt-pt"):
+            return "pt"
+        return c
 
     try:
-        from langdetect import detect, DetectorFactory  # type: ignore
-        # Make results deterministic
+        from langdetect import detect_langs, DetectorFactory  # type: ignore
         DetectorFactory.seed = 0
-        lang = detect(sample)
-        # Normalize and map to two-letter lowercase
-        return (lang or default_lang).lower()
+
+        scores: Dict[str, float] = {a: 0.0 for a in allowed}
+        total_weight = 0.0
+
+        # Cap number of samples and weight by length (bounded)
+        for s in samples[:200]:
+            weight = min(float(len(s)), 500.0)
+            try:
+                guesses = detect_langs(s)
+            except Exception:
+                continue
+            if not guesses:
+                continue
+            # Use top-1 for stability
+            top = max(guesses, key=lambda g: float(getattr(g, "prob", 0.0)))
+            pred = normalize_code(top.lang)
+            prob = float(getattr(top, "prob", 0.0))
+            if pred in scores:
+                scores[pred] += prob * weight
+            total_weight += weight
+
+        # If no allowed language got any score, fall back
+        if all(v <= 0.0 for v in scores.values()):
+            return (default_lang.lower() if default_lang.lower() in allowed else next(iter(allowed)))
+
+        best_lang = max(scores.items(), key=lambda kv: kv[1])[0]
+        return best_lang
     except Exception:
-        # If langdetect missing or fails, fall back
-        return default_lang
+        # If langdetect not available or fails: fallback bounded to allowed
+        return (default_lang.lower() if default_lang.lower() in allowed else next(iter(allowed)))
 
 
 # -------------------------
@@ -168,6 +229,30 @@ def compress_diagram_text(xml: str) -> str:
     out = comp.compress(raw) + comp.flush()
     return base64.b64encode(out).decode("ascii")
 
+# -------------------------
+# Other processing  helpers
+# -------------------------
+def get_inner_mxcell_of_wrapper(wrapper: ET.Element) -> Optional[ET.Element]:
+    if _localname(wrapper.tag) != "UserObject":
+        return None
+    for ch in list(wrapper):
+        if _localname(ch.tag) == "mxCell":
+            return ch
+    return None
+
+def set_base_label_and_clear_inner(container: ET.Element, base_text: str) -> None:
+    """
+    Set the visible base label on the UserObject and remove 'value'/'label'
+    from the inner mxCell so it cannot override the wrapper label.
+    If 'container' is not a UserObject (edge case), we still set its 'label'.
+    """
+    container.set("label", base_text)
+    if _localname(container.tag) == "UserObject":
+        inner = get_inner_mxcell_of_wrapper(container)
+        if inner is not None:
+            for k in ("value", "label"):
+                if k in inner.attrib:
+                    del inner.attrib[k]
 
 # -------------------------
 # Utilities and label handling
@@ -266,20 +351,20 @@ def translate_and_apply_for_element(
     overwrite_existing: bool,
 ) -> int:
     """
-    For a single element that has visible text, ensure a UserObject container,
-    set base label to English if requested, and write label_xx/label-xx for other langs.
+    Ensure a UserObject container for text-bearing elements, set base label,
+    and write label_xx/label-xx for languages in LANGUAGES.
+    Also writes label_en/label-en if configured and 'en' is requested.
     Returns count of attributes written/updated.
     """
     pair = find_label_text(elem)
     if not pair:
         return 0
-
     _, raw_value = pair
-    base_text = decode_label_text(raw_value)
-    if not base_text:
+    original_text = decode_label_text(raw_value)
+    if not original_text:
         return 0
 
-    # Ensure we write onto a UserObject
+    # Ensure we write on a UserObject wrapper
     container = elem
     if _localname(elem.tag) == "mxCell":
         container = ensure_userobject_wrapper(elem, parent_map)
@@ -289,53 +374,60 @@ def translate_and_apply_for_element(
             container = par
 
     written = 0
-
-    # Determine which languages to generate (only those in langs)
     target_langs = [lc.lower() for lc in langs]
+    has_en = ("en" in target_langs)
 
-    # Optionally set English as base label
-    if english_in_langs:
-        if primary_lang == "en":
-            # Keep English base as-is; do not create label_en/value_en
-            english_text = base_text
-        else:
-            english_text = translator.translate(base_text, "en", source_lang=primary_lang)
-        # Set visible base text on the container
-        if container.get("label") != english_text:
-            container.set("label", english_text)
+    # Determine the English base text if requested
+    if has_en:
+        english_text = original_text if primary_lang == "en" else translator.translate(original_text, "en", source_lang=primary_lang)
+        # Always set the base visible label to English when 'en' is in LANGUAGES
+        if overwrite_existing or container.get("label", "") != english_text:
+            set_base_label_and_clear_inner(container, english_text)
             written += 1
+        # Also create label_en / label-en if enabled
+        if WRITE_EN_KEYS:
+            for key in ("label_en", "label-en"):
+                if overwrite_existing or (key not in container.attrib):
+                    if not("-" in key):
+                        container.set(key, english_text)
+                    written += 1
+        # Preserve original primary text under label_<src> if the primary is not English
+        if primary_lang != "en":
+            for key in (f"label_{primary_lang}", f"label-{primary_lang}"):
+                if overwrite_existing or (key not in container.attrib):
+                    if not("-" in key):
+                        container.set(key, original_text)
+                    written += 1
+    else:
+        # English not requested: keep base text in the primary language as-is
+        # but ensure the wrapper is authoritative
+        if overwrite_existing or container.get("label", "") != original_text:
+            set_base_label_and_clear_inner(container, original_text)
+            written += 1
+        # Make sure primary language key exists if you want explicit variants
+        # (optional; keep as-is if you don't want to duplicate)
+        # for key in (f"label_{primary_lang}", f"label-{primary_lang}"):
+        #     if overwrite_existing or (key not in container.attrib):
+        #         container.set(key, original_text)
+        #         written += 1
 
-    # Preserve original primary language under label_<src> if we switched base to English
-    if english_in_langs and primary_lang != "en":
-        for key in (f"label_{primary_lang}", f"label-{primary_lang}"):
-            if overwrite_existing or (key not in container.attrib):
-                container.set(key, base_text)
-                written += 1
-
-    # Create other translations for langs except 'en' (we never create label_en/value_en)
+    # Write translations for other languages in LANGUAGES (excluding 'en', handled above)
     for lang in target_langs:
         if lang == "en":
-            continue  # no label_en keys; English is base if requested
-        # If lang == primary, we already preserved the original (above) when english_in_langs
-        if lang == primary_lang:
-            # If 'en' not requested, we may still want to ensure label_<primary> exists
-            if not english_in_langs:
-                for key in (f"label_{lang}", f"label-{lang}"):
-                    if overwrite_existing or (key not in container.attrib):
-                        container.set(key, base_text)
-                        written += 1
             continue
-
-        # Translate from primary_lang to lang
-        translated = translator.translate(base_text, lang, source_lang=primary_lang)
-        # only doing it for label_ in the moment
-        #for key in (f"label_{lang}", f"label-{lang}"):
-        for key in (f"label_{lang}"):
+        if lang == primary_lang:
+            # Already preserved above when 'en' requested; if 'en' not requested,
+            # you may still ensure label_<primary> exists (optional, see commented block above).
+            continue
+        translated = translator.translate(original_text, lang, source_lang=primary_lang)
+        for key in (f"label_{lang}", f"label-{lang}"):
             if overwrite_existing or (key not in container.attrib):
-                container.set(key, translated)
+                if not("-" in key):
+                    container.set(key, translated)
                 written += 1
 
     return written
+
 
 
 # -------------------------
@@ -353,8 +445,8 @@ def process_diagram_xml(diagram_xml: str, translator: Translator, languages: Lis
 
     # Detect primary language from sample texts
     texts = collect_diagram_texts(inner_root)
-    primary_lang = detect_primary_language(texts, default_lang=SOURCE_LANG.lower())
 
+    primary_lang = detect_primary_language_allowed(texts, allowed_langs=languages, default_lang=SOURCE_LANG.lower())
     english_in_langs = ("en" in {l.lower() for l in languages})
 
     # Iterate over a static list to tolerate tree changes (wrapping)
@@ -407,7 +499,8 @@ def process_drawio_file(
             # Build parent map for the diagram node
             parent_map = build_parent_map(diagram)
             texts = collect_diagram_texts(diagram)
-            primary_lang = detect_primary_language(texts, default_lang=SOURCE_LANG.lower())
+            primary_lang = detect_primary_language_allowed(texts, allowed_langs=languages,
+                                                           default_lang=SOURCE_LANG.lower())
             english_in_langs = ("en" in {l.lower() for l in languages})
 
             for elem in list(diagram.iter()):

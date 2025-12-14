@@ -1,0 +1,42 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0" version="29.2.6">
+  <diagram name="Seite-1" id="9dAV_fo5yi7UgwN8BvNN">
+    <mxGraphModel dx="2816" dy="1078" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BME-CNMJfm2XG40zyRKo-1" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#FFFFFF;strokeColor=light-dark(#00AAAA,#A1CDF9);fontSize=15;fillColor=light-dark(#00AAAA,#EDEDED);" value="Start" vertex="1">
+          <mxGeometry height="40" width="76" x="167" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#0000A0,#EDEDED);fontColor=light-dark(#ffffff, #ededed);fontSize=15;strokeColor=light-dark(#0000A0,#A1CDF9);" value="Vorabklärung" vertex="1">
+          <mxGeometry height="60" width="130" x="140" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#0000A0,#EDEDED);fontColor=light-dark(#ffffff, #ededed);fontSize=15;strokeColor=light-dark(#0000A0,#A1CDF9);" value="Analyse und Aufbereitung" vertex="1">
+          <mxGeometry height="60" width="130" x="140" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#0000A0,#EDEDED);fontColor=light-dark(#ffffff, #ededed);fontSize=15;strokeColor=light-dark(#0000A0,#A1CDF9);" value="Publikation" vertex="1">
+          <mxGeometry height="60" width="130" x="140" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-54" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-12" style="endArrow=open;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;endFill=0;" target="BME-CNMJfm2XG40zyRKo-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="205" y="300" as="sourcePoint" />
+            <mxPoint x="216" y="352.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-57" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-10" style="endArrow=open;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;endFill=0;edgeStyle=orthogonalEdgeStyle;" target="BME-CNMJfm2XG40zyRKo-12" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="205" y="190" as="sourcePoint" />
+            <mxPoint x="519" y="494.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-58" edge="1" parent="1" style="endArrow=open;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;endFill=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="BME-CNMJfm2XG40zyRKo-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="205" y="70" as="sourcePoint" />
+            <mxPoint x="90" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

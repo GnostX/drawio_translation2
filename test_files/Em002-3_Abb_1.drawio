@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0" version="29.2.6">
+  <diagram name="Seite-1" id="9dAV_fo5yi7UgwN8BvNN">
+    <mxGraphModel dx="1426" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BME-CNMJfm2XG40zyRKo-1" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#FFFFFF;strokeColor=light-dark(#00AAAA,#A1CDF9);fontSize=15;fillColor=light-dark(#00AAAA,#EDEDED);" value="Start" vertex="1">
+          <mxGeometry height="40" width="76" x="167" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-2" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#00AAAA;strokeColor=none;fontSize=15;" value="Ja" vertex="1">
+          <mxGeometry height="30" width="30" x="190" y="249.5" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-3" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#00AAAA;strokeColor=none;fontSize=15;" value="Nein" vertex="1">
+          <mxGeometry height="30" width="50" x="674" y="249.5" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-4" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontColor=#FFFFFF;strokeColor=light-dark(#00AAAA,#A1CDF9);fontSize=15;fillColor=light-dark(#00AAAA,#EDEDED);" value="&quot;Umfeld&quot;&amp;nbsp;&lt;br&gt;erzwingt&amp;nbsp;&lt;br&gt;Lizenz" vertex="1">
+          <mxGeometry height="105" width="180" x="115" y="122.5" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-5" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontColor=#FFFFFF;strokeColor=light-dark(#00AAAA,#A1CDF9);fontSize=15;fillColor=light-dark(#00AAAA,#EDEDED);" value="Bibliothek, Referenzimplementation&amp;nbsp;&lt;br&gt;oder liberale&amp;nbsp;&lt;br&gt;Anforderungen" vertex="1">
+          <mxGeometry height="140" width="230" x="422" y="194.5" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#00AAAA,#EDEDED);fontColor=light-dark(#ffffff, #ededed);fontSize=15;strokeColor=light-dark(#00AAAA,#A1CDF9);" value="&lt;div&gt;Erzwungene&amp;nbsp; &amp;nbsp;&lt;br&gt;Lizenz wählen&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="130" x="140" y="332" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#00AAAA,#EDEDED);fontColor=light-dark(#ffffff, #ededed);fontSize=15;strokeColor=light-dark(#00AAAA,#A1CDF9);" value="MIT" vertex="1">
+          <mxGeometry height="60" width="130" x="308" y="332" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#00AAAA,#EDEDED);fontColor=light-dark(#ffffff, #ededed);fontSize=15;strokeColor=light-dark(#00AAAA,#A1CDF9);" value="AGPL" vertex="1">
+          <mxGeometry height="60" width="130" x="634" y="332" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-21" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#00AAAA;strokeColor=none;fontSize=15;" value="Nein" vertex="1">
+          <mxGeometry height="30" width="50" x="348" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-25" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontColor=#00AAAA;strokeColor=none;fontSize=15;" value="Ja" vertex="1">
+          <mxGeometry height="30" width="50" x="348" y="249.5" as="geometry" />
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-36" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-25" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="BME-CNMJfm2XG40zyRKo-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="247" y="802" as="sourcePoint" />
+            <mxPoint x="417" y="242" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-39" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="BME-CNMJfm2XG40zyRKo-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="205" y="199.5" as="sourcePoint" />
+            <mxPoint x="170" y="262" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-41" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-3" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="BME-CNMJfm2XG40zyRKo-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="227" y="822" as="sourcePoint" />
+            <mxPoint x="277" y="772" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-43" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-4" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" target="BME-CNMJfm2XG40zyRKo-21" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="282" y="190" as="sourcePoint" />
+            <mxPoint x="170" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-53" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-21" style="endArrow=open;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;endFill=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;edgeStyle=orthogonalEdgeStyle;" target="BME-CNMJfm2XG40zyRKo-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="460" y="160" as="sourcePoint" />
+            <mxPoint x="220" y="589" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-54" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-3" style="endArrow=open;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="BME-CNMJfm2XG40zyRKo-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="608" y="432" as="sourcePoint" />
+            <mxPoint x="710" y="332" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-57" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-25" style="endArrow=open;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;endFill=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;edgeStyle=orthogonalEdgeStyle;" target="BME-CNMJfm2XG40zyRKo-12" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="687" y="532" as="sourcePoint" />
+            <mxPoint x="687" y="584" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-58" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-2" style="endArrow=open;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;endFill=0;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="BME-CNMJfm2XG40zyRKo-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="80" y="262" as="sourcePoint" />
+            <mxPoint x="-80" y="332" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BME-CNMJfm2XG40zyRKo-59" edge="1" parent="1" source="BME-CNMJfm2XG40zyRKo-1" style="endArrow=none;html=1;rounded=0;strokeColor=light-dark(#00AAAA,#A1CDF9);strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="BME-CNMJfm2XG40zyRKo-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="120" y="170" as="sourcePoint" />
+            <mxPoint x="80" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

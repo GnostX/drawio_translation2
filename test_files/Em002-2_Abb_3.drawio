@@ -1,0 +1,155 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0" version="29.2.6">
+  <diagram id="oIHpHY2IAmJOagbEh1uT" name="Seite-1">
+    <mxGraphModel dx="3643" dy="1078" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-1" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="NEzJa4hxCiV1bhJYSOGo-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="504" y="229" as="sourcePoint" />
+            <mxPoint x="1178" y="249" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-2" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#00AAAA,#EDEDED);endArrow=none;endFill=0;" target="NEzJa4hxCiV1bhJYSOGo-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="111" y="260" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#00AAAA;fontColor=#FFFFFF;" value="Start" vertex="1">
+          <mxGeometry height="60" width="180" x="47" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#00AAAA;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Ausnahme: Sicherheits-&lt;br&gt;relevante Gründe&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="191" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;" value="Einige oder mehrere Punkte treffen zu" vertex="1">
+          <mxGeometry height="30" width="130" x="72" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;" value="Einige oder mehrere Punkte treffen zu" vertex="1">
+          <mxGeometry height="30" width="130" x="422" y="385.5" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;" value="Nicht zutreffend" vertex="1">
+          <mxGeometry height="40" width="97" x="330" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-8" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#00AAAA,#EDEDED);strokeColor=none;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Temporäre Gründe?&lt;sup&gt;2&lt;/sup&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="196" x="389" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#00AAAA;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Freigabe eines Teils der&amp;nbsp;&lt;br&gt;Software&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="-97" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-10" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=none;endFill=0;" target="NEzJa4hxCiV1bhJYSOGo-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="212.62599999999975" y="190.1400000000001" as="sourcePoint" />
+            <mxPoint x="-210" y="419.9999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-11" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;" target="NEzJa4hxCiV1bhJYSOGo-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="312" y="180" as="sourcePoint" />
+            <mxPoint x="111" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-12" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="NEzJa4hxCiV1bhJYSOGo-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="774" y="260" as="sourcePoint" />
+            <mxPoint x="656.9999999999995" y="369.9999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-13" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="NEzJa4hxCiV1bhJYSOGo-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="770" as="sourcePoint" />
+            <mxPoint x="462" y="719" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-14" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="NEzJa4hxCiV1bhJYSOGo-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="421" y="180" as="sourcePoint" />
+            <mxPoint x="176.0588235294117" y="749" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-15" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#00AAAA,#EDEDED);strokeColor=none;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Sicherheits-&lt;br&gt;relevante&amp;nbsp; Software&amp;nbsp;&lt;br&gt;entkoppelbar?&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="196" x="39" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#00AAAA;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Temporäre Ausnahme&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="397" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-17" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=none;endFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="NEzJa4hxCiV1bhJYSOGo-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="430" as="sourcePoint" />
+            <mxPoint x="512" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;" value="Ja" vertex="1">
+          <mxGeometry height="20" width="130" x="-72" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;" value="Keine temporären Gründe" vertex="1">
+          <mxGeometry height="30" width="150" x="620" y="301" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-20" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=none;endFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="NEzJa4hxCiV1bhJYSOGo-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="439" y="390" as="sourcePoint" />
+            <mxPoint x="621" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-21" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;" target="NEzJa4hxCiV1bhJYSOGo-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="426" y="560" as="sourcePoint" />
+            <mxPoint x="786" y="940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;" value="Nein" vertex="1">
+          <mxGeometry height="20" width="130" x="216" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-23" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=none;endFill=0;exitX=0.935;exitY=0.501;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="NEzJa4hxCiV1bhJYSOGo-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="281" y="400" />
+            </Array>
+            <mxPoint x="290" y="210" as="sourcePoint" />
+            <mxPoint x="407" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-24" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="NEzJa4hxCiV1bhJYSOGo-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="300" as="sourcePoint" />
+            <mxPoint x="660" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-25" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;" target="NEzJa4hxCiV1bhJYSOGo-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="480" as="sourcePoint" />
+            <mxPoint x="314.04761904761926" y="545" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-26" edge="1" parent="1" source="NEzJa4hxCiV1bhJYSOGo-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#00aaaa, #ededed);endArrow=classic;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="NEzJa4hxCiV1bhJYSOGo-30">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="1014" y="380" as="sourcePoint" />
+            <mxPoint x="1014" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;align=left;spacing=0;verticalAlign=top;" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt; &lt;b&gt;&amp;nbsp;Sicherheitsrelevante Gründe&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Massive Erhöhung der Informations-sicherheits-Risiken&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Vertrauliche Algorithmen&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Schützenswerte Cybertechnologie&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Gesetzliche Gründe sprechen gegen eine Publikation&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="260" x="-97" y="588" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;align=left;spacing=0;verticalAlign=top;" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;sup&gt;2&lt;/sup&gt; &lt;b&gt;Temporäre Gründe&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Legacy oder undefinierter Code&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Laufende Sicherheitsprüfungen oder Code-Bereinigung&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Mangelnder und undefinierter Entwicklungsprozess&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="140" width="269" x="207" y="588" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=light-dark(#00AAAA,#EDEDED);fontColor=light-dark(#ffffff, #ededed);" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Massnahmen zur Publikation&lt;sup&gt;3&lt;/sup&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="635" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#00AAAA;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Freigabe&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="605" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-31" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#00AAAA,#EDEDED);strokeColor=none;fontColor=#FFFFFF;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Sicherheitsrelevante&lt;br&gt;Gründe?&lt;sup&gt;1&lt;/sup&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="196" x="39" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;fontColor=light-dark(#00aaaa, #121212);strokeWidth=2;align=left;spacing=0;verticalAlign=top;" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;sup&gt;3&lt;/sup&gt; &lt;b&gt;Massnahmen zur Publikation&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Konfiguration von Software trennen&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Fachlih sensible Informationen von Software trennen&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;TOM-Massnahmen planen und durchführen&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Qualitätsaktivitäten durchführen&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="260" x="520" y="588" as="geometry" />
+        </mxCell>
+        <mxCell id="NEzJa4hxCiV1bhJYSOGo-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=light-dark(#0000A0,#EDEDED);" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(255, 255, 255), rgb(237, 237, 237));&quot;&gt;Relevant ist immer die Software und nicht der Zweck der Software. Die Bearbeitung kritischer Daten ist nicht a priori ein sicherheitsrelevanter Aspekt.&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="352" x="370" y="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
