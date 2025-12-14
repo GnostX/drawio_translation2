@@ -7,23 +7,23 @@ To make use of the translations use: https://app.diagrams.net/?ui=kennedy&transl
 The way to switch then between languages and how to handle the translations is discussed here: https://www.drawio.com/blog/translate-diagrams
 The result of the translation can also be seen in the following video: https://github.com/GnostX/drawio_translation2/blob/main/docs/usage_of_translation_result.mp4
 
-This tool can:
+## This tool can:
 - Detect the primary language of each page (diagram) automatically
 - Generate translations only for the languages you specify
-- Treat English specially: if “en” is one of your target languages, the visible text becomes English (no label_en/value_en keys), and the original language is preserved under label_<src> (and with a code change also in label-<src>)
+- Treat English specially: if “en” is one of your target languages, the visible text becomes English (no label_en/value_en keys), and the original language is preserved under label_<src>
 - Add translations to the right place (UserObject), so you can see and manage them in “Edit Data…”
 - Handle both compressed and uncompressed pages and multi-page files
 - Process a single file or all .drawio files in a folder
 - Provide a small web UI (drag-and-drop) to translate and download the result
 
-Contents
+## Contents
 - translate_drawio.py — CLI for translating labels in .drawio files
-- server.py — Flask server with a drag-and-drop upload page
+- server.py — Flask server with a drag-and-drop upload page (NOT TESTED AT ALL, just experimental)
 - configuration.py — your configuration file (languages, output directory, options)
 - pyproject.toml — project metadata, dependencies, mypy config
 - README.md — this document
 
-Features at a glance
+## Features at a glance
 - Per-page primary language detection (langdetect)
 - Translation backend: “translators” library (supports google, bing, deepl, etc.)
 - Writes translation keys onto UserObject so they appear in “Edit Data…”
@@ -32,7 +32,7 @@ Features at a glance
 - Folder mode: process all .drawio files in a directory (non-recursive)
 - Optionally emit uncompressed inner XML for inspection
 
-How it works
+## How it works
 - The tool finds visible texts in shapes (typically in mxCell@value or @label).
 - It detects the page’s primary language from a sample of visible texts.
 - It wraps text-bearing mxCell nodes in a UserObject if needed (this is how diagrams.net stores custom data you see in “Edit Data…”).
@@ -40,11 +40,11 @@ How it works
   - label_xx (and in future also for label-xx) for each configured language
   - If English is in your language list and the diagram isn’t in English:
     - The visible text (UserObject@label) is set to the English translation
-    - The original language text is preserved under label_<src> (and label-<src>)
+    - The original language text is preserved under label_<src>
     - No label_en/value_en are created; English is stored as the base label/value
 - It preserves page compression when the diagram was originally compressed (unless you ask for uncompressed output for inspection).
 
-Requirements
+## Requirements
 - Python 3.10+
 - Dependencies (installed via pyproject.toml):
   - translators (translation backend)
@@ -52,7 +52,7 @@ Requirements
   - requests
   - Flask (for the optional web server)
 
-Installation
+## Installation
 Option A: install as an editable package using pyproject.toml
 - Create and activate a virtual environment
 - From the project root:
@@ -61,7 +61,7 @@ Option A: install as an editable package using pyproject.toml
 Option B: install dependencies directly
 - pip install translators langdetect requests Flask
 
-Configuration
+## Configuration
 Create configuration.py in the project directory. Example:
 
 ```python
@@ -89,7 +89,7 @@ TRANSLATOR_TIMEOUT = 20
 TRANSLATOR_PROXIES = None
 ```
 
-Usage (CLI)
+## Usage (CLI)
 Translate a single file:
 - python translate_drawio.py path/to/diagram.drawio
 
@@ -98,7 +98,7 @@ Translate all .drawio files in a folder (non-recursive):
 
 Options:
 - --nooverwrite
-  - Do not overwrite existing label_xx/label-xx keys
+  - Do not overwrite existing label_xx keys
 - --uncompressed
   - Write page XML uncompressed (useful for inspecting the inner XML)
 - --out-name NAME
@@ -109,7 +109,7 @@ Output location and naming
 - By default the output file name equals the input file name (no suffix changes)
 - For folder inputs, each .drawio file is processed into a same-named file inside OUTPUT_DIR
 
-Web server (drag-and-drop)
+## Web server (drag-and-drop) (!NOT TESTED)
 Run:
 - python server.py
 - Open http://127.0.0.1:5000
@@ -119,7 +119,7 @@ Run:
   - POST /translate — returns the translated file as attachment
   - GET /healthz — health check
 
-Behavior details
+## Behavior details
 
 1) Primary language detection
 - For each page (<diagram>), the tool collects up to 100 label/value texts and uses langdetect to determine the primary language, with a deterministic seed.
@@ -145,19 +145,7 @@ Behavior details
   - label_de and label-de, label_fr and label-fr, etc.
 - It focuses on label_* keys because UserObject@label corresponds to visible text. If you need parallel value_* keys, that can be enabled on request.
 
-Examples
-
-- Diagram primarily in German (detected), LANGUAGES = ["en","de","fr","it"]
-  - Base text set to English (UserObject@label = English)
-  - Preserve German under label_de and label-de
-  - Generate French label_fr/label-fr and Italian label_it/label-it
-  - No label_en keys created
-
-- Diagram primarily in English (detected), LANGUAGES = ["en","fr"]
-  - Base English text unchanged (no label_en)
-  - Create label_fr/label-fr with French translation
-
-Troubleshooting
+## Troubleshooting
 
 - I don’t see any translations in “Edit Data…”
   - Ensure you’re opening the translated output file from OUTPUT_DIR
@@ -180,12 +168,12 @@ Security and privacy
 - The “translators” library uses provider web endpoints. Your diagram texts are sent over the network to obtain translations, depending on the engine you select. Consider provider terms of service and privacy implications, and use proxies or on-prem solutions as needed.
 - If you require strict privacy, consider integrating an on-prem translation API and replacing the Translator.translate() implementation.
 
-Development
+## Development
 - Type checking with mypy is configured in pyproject.toml.
 - Run: mypy translate_drawio.py server.py
 - You can adjust strictness in pyproject.toml as needed.
 
-Project structure
+## Project structure
 ```
 .
 ├─ translate_drawio.py   # CLI tool; per-page language detection; translators backend
@@ -195,13 +183,13 @@ Project structure
 └─ README.md
 ```
 
-License
+## License
 - AGPL 3.0 
 
-Contributions
+## Contributions
 - Issues and pull requests are welcome. If you’re proposing behavior changes (e.g., value_* mirrors or recursive folder processing), please include a small sample .drawio illustrating the expected result.
 
-Thank you
+## Thank you
 - diagrams.net team for the diagram format
 - Maintainers of translators and langdetect for their libraries
 - ChatGPT
