@@ -4,7 +4,8 @@ Matthias Günter, matthias.guenter@gnostx.ch
 Translate text in draw.io (.drawio) diagrams into multiple languages and embed the translations so they are visible in diagrams.net’s “Edit Data…” panel and compatible with the translate-diagram helper.
 
 To make use of the translations use: https://app.diagrams.net/?ui=kennedy&translate-diagram=1
-The way to switch then between languages and how to handle the translations is discussed here: https://www.drawio.com/blog/translate-diagrams 
+The way to switch then between languages and how to handle the translations is discussed here: https://www.drawio.com/blog/translate-diagrams
+The result of the translation can also be seen in the following video: https://github.com/GnostX/drawio_translation2/blob/main/docs/usage_of_translation_result.mp4
 
 This tool can:
 - Detect the primary language of each page (diagram) automatically
